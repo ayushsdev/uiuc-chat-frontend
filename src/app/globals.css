@@ -67,3 +67,128 @@ body {
   font-weight: 700;
   font-style: normal;
 }
+.darker-grotesque-small {
+  font-family: "Darker Grotesque", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: normal;
+}
+
+.custom-bg {
+  background: 
+    linear-gradient(to bottom right, #FF5F05 0%, #13294B 50%) bottom right / 50% 50% no-repeat,
+    linear-gradient(to bottom left, #FF5F05 0%, #13294B 50%) bottom left / 50% 50% no-repeat,
+    linear-gradient(to top left, #FF5F05 0%, #13294B 50%) top left / 50% 50% no-repeat,
+    linear-gradient(to top right, #FF5F05 0%, #13294B 50%) top right / 50% 50% no-repeat;
+  background-size: 50% 50%;
+  background-repeat: no-repeat;
+  background-position: 
+    bottom right,
+    bottom left,
+    top left,
+    top right;
+    animation: animate-bg 8s infinite ease-in-out;
+
+}
+
+@keyframes gradientShiftGlow {
+  0% {
+    background-position: 0% 50%;
+    filter: brightness(100%) blur(0px);
+  }
+  25% {
+    background-position: 50% 100%;
+    filter: brightness(120%) blur(2px);
+  }
+  50% {
+    background-position: 100% 50%;
+    filter: brightness(130%) blur(0px);
+  }
+  75% {
+    background-position: 50% 0%;
+    filter: brightness(120%) blur(2px);
+  }
+  100% {
+    background-position: 0% 50%;
+    filter: brightness(100%) blur(0px);
+  }
+}
+.orange-text-gradient {
+  background: linear-gradient(90deg, #fcb316, #ff5f05, #fcb316);
+  background-size: 200% 200%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  text-fill-color: transparent;
+  animation: gradientShiftGlow 5s ease-in-out infinite;
+}
+
+@property --angle {
+  syntax: '<angle>';
+  initial-value: 0deg;
+  inherits: false;
+}
+
+@keyframes rotate {
+  to {
+    --angle: 360deg;
+  }
+}
+
+.animate-border {
+  animation: rotate 4s linear infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% center;
+  }
+  100% {
+    background-position: 200% center;
+  }
+}
+
+.animate-gradient-x {
+  background-size: 200% auto;
+  animation: gradient 3s linear infinite;
+}
+
+@keyframes tilt {
+  0%, 50%, 100% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(0.5deg);
+  }
+  75% {
+    transform: rotate(-0.5deg);
+  }
+}
+
+.animate-tilt {
+  animation: tilt 10s infinite linear;
+}
+* {
+  /* Ensures smoother animations */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Optional: If you want all animations to pause when user prefers reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-10px); }
+    100% { transform: translateY(0px); }
+}
+
+.animate-float {
+    animation: float 6s ease-in-out infinite;
+}
